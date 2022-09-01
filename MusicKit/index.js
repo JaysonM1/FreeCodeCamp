@@ -113,8 +113,32 @@ const bankTwo = [
   ];
 function App(){
     return(
-        <div>Hello World</div>
-    )
+        <div className = "bg-info min-vh-100 text-white">
+            <div className = "text-center">
+                <h2>Music Kit</h2>
+                {bankOne.map(clip => (
+                    <Pad key = {clip.id} clip = {clip}></Pad>
+                    )
+                )}
+            </div>
+        </div>
+    );
 }
+
+function Pad({clip}) {
+    const playSound = () => {
+        const audioTag = document.getElementById({clip,keyTrigger});
+        audioTag.currentTime = 0;
+        audioTag.play();
+    };
+    return(
+        <div onClick = {playSound} className = "btn btn-secordary p-4 m-3">
+            <Audio className = "clip" id = {clip.keyTrigger} src = {clip.url}/>
+            {clip.keyTrigger}
+        </div>
+    
+    );
+}
+
 
 ReactDOM.render(<App />, document.getElementById("app"));
